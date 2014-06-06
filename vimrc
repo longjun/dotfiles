@@ -1,79 +1,3 @@
-"==========================================
-" Vundle 插件管理
-"==========================================
-    set nocompatible
-    filetype off
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
-
-    " 代码片段管理
-    Bundle 'SirVer/ultisnips'
-    let g:UltiSnipsEditSplit="vertical"
-    let g:UltiSnipsSnippetDir = "~/.vim/UltiSnips"
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-    " 文件管理
-    Bundle 'scrooloose/nerdtree'
-    let NERDTreeShowHidden = 0
-    let g:netrw_winsize = 10
-    nmap <silent> <leader>nt :NERDTree <CR>
-    map <F3> :NERDTreeToggle<CR>
-    nmap <silent> <leader>fe :Sexplore!<CR>
-
-    " 缩进管理
-    Bundle 'Indent-Guides'
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_auto_colors     = 0
-
-    " 状态栏美化，轻量级的powerline
-    Bundle 'bling/vim-airline'
-    let g:airline_left_sep = ''
-    let g:airline_right_sep = ''
-
-    Bundle 'minibufexpl.vim'
-    let g:miniBufExplMapWindowNavVim = 1
-    let g:miniBufExplMapWindowNavArrows = 1
-    let g:miniBufExplMapCTabSwitchBufs = 1
-    let g:miniBufExplModSelTarget = 1
-
-    Bundle 'vim-stylus'
-    Bundle 'mattn/emmet-vim'
-    Bundle 'ctrlp.vim'
-    " 括号自动补全
-    Bundle 'Raimondi/delimitMate'
-
-    " 快速切换括号/引号或者标签
-    Bundle 'tpope/vim-surround'
-    
-    " 批量注释，gc,gcc,gcu
-    Bundle 'tpope/vim-commentary'
-    autocmd FileType python,shell set commentstring=#\ %s
-    autocmd FileType mako set cms=##\ %s
-
-    Bundle 'hdima/python-syntax'
-    Bundle 'nono/jquery.vim'
-    Bundle 'Glench/Vim-Jinja2-Syntax'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'rizzatti/funcoo.vim'
-    Bundle 'rizzatti/dash.vim'
-    Bundle 'einars/js-beautify'
-
-    " 格式化
-    Bundle 'maksimr/vim-jsbeautify'
-    map <c-f> :call JsBeautify()<cr>
-    autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-    autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-    autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-    Bundle 'terryma/vim-multiple-cursors'
-
-    filetype plugin indent on
-
 
 "==========================================
 " Basics 基本设置
@@ -144,6 +68,8 @@
     set expandtab
     set softtabstop=4
     set autoindent
+    set foldmethod=indent
+    set foldlevel=99
 
 "    autocmd FileType python set omnifunc=pythoncomplete
 "    autocmd FileType javascript set omnifunc=javascriptcomplete
@@ -171,14 +97,88 @@
     let g:mapleader=","
 " }
 
-
 "==========================================
-" Plugin 插件设置
+" Vundle 插件管理
 "==========================================
+    set nocompatible
+    filetype off
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+    Bundle 'gmarik/vundle'
 
+    " 代码片段管理
+    Bundle 'SirVer/ultisnips'
+    let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsSnippetDir = "~/.vim/UltiSnips"
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+    " 文件管理
+    Bundle 'scrooloose/nerdtree'
+    let NERDTreeShowHidden = 0
+    let g:netrw_winsize = 10
+    nmap <silent> <leader>nt :NERDTree <CR>
+    map <F3> :NERDTreeToggle<CR>
+    nmap <silent> <leader>fe :Sexplore!<CR>
 
+    " 缩进管理
+    Bundle 'Indent-Guides'
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_auto_colors     = 0
 
+    " 状态栏美化，轻量级的powerline
+    Bundle 'bling/vim-airline'
+    let g:airline_left_sep = ''
+    let g:airline_right_sep = ''
 
+    Bundle 'minibufexpl.vim'
+    let g:miniBufExplMapWindowNavVim = 1
+    let g:miniBufExplMapWindowNavArrows = 1
+    let g:miniBufExplMapCTabSwitchBufs = 1
+    let g:miniBufExplModSelTarget = 1
 
+    Bundle 'vim-stylus'
+    Bundle 'mattn/emmet-vim'
+    Bundle 'ctrlp.vim'
+    " 括号自动补全
+    Bundle 'Raimondi/delimitMate'
 
+    " 快速切换括号/引号或者标签
+    Bundle 'tpope/vim-surround'
+    
+    " 批量注释，gc,gcc,gcu
+    Bundle 'tpope/vim-commentary'
+    autocmd FileType python,shell set commentstring=#\ %s
+    autocmd FileType mako set cms=##\ %s
+
+    Bundle 'ervandew/supertab'
+    au FileType python set omnifunc=pythoncomplete#Complete
+    let g:SuperTabDefaultCompletionType = "context"
+    set completeopt=menuone,longest,preview
+
+    Bundle 'kevinw/pyflakes-vim'
+    let g:pyflakes_use_quickfix = 0
+
+    Bundle 'fs111/pydoc.vim'
+
+    " Bundle 'hdima/python-syntax'
+    " Bundle 'nono/jquery.vim'
+    Bundle 'Glench/Vim-Jinja2-Syntax'
+    " Bundle 'scrooloose/syntastic'
+    " Bundle 'rizzatti/funcoo.vim'
+    " Bundle 'rizzatti/dash.vim'
+    " Bundle 'einars/js-beautify'
+
+    " 格式化
+    " Bundle 'maksimr/vim-jsbeautify'
+    " map <c-f> :call JsBeautify()<cr>
+    " autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+    " autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+    " autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+    Bundle 'terryma/vim-multiple-cursors'
+
+    filetype plugin indent on
